@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 class Main{
 
     public static String reverse(String str){
@@ -46,6 +50,28 @@ class Main{
         }
 
         return cnt;
+    }
+
+    @SuppressWarnings("Convert2Lambda")
+    public static void sortListOfLists(List<List<Integer>> arr){
+
+        Collections.sort(arr,new Comparator<List<Integer>>(){
+
+            @Override
+            public int compare(List<Integer> list1 , List<Integer> list2){
+
+                int size = Integer.compare( list1.size() , list2.size());
+                if(size != 0) return size;
+
+                for(int i = 0; i < Math.min(list1.size(),list2.size()) ; i++){
+                    int elementCompare = Integer.compare( list1.get(i) , list2.get(i));
+
+                    if(elementCompare != 0) return elementCompare;
+                }
+                return 0;
+            }
+            
+        });
     }
 
     public static void swap2numbers(int n1,int n2){
@@ -136,6 +162,44 @@ class Main{
     
     }
 
+    public static void printList(List<List<Integer>> arr){
+        
+        for(List<Integer> i : arr){
+
+            for(Integer num : i){
+
+                System.out.print("[ "+num+" ]");
+            }
+            System.out.println();
+        }
+    }
+
+    public static List<List<Integer>> allSubset(int arr[]){
+
+        List<List<Integer>> ans = new ArrayList<>();
+
+        int n = arr.length;
+        int k = 1 << n;
+
+        for(int i = 0; i < k-1; i++){
+            List<Integer> temp = new ArrayList<>();
+
+            for(int j = 0;j < n ; j++){
+
+                int check =  i & (1 << j);
+                if(check != 0) temp.add(arr[j]);
+            }
+            ans.add(temp);
+        }
+
+        sortListOfLists(ans);
+
+        printList(ans);
+
+        return ans;
+
+    }
+
     public static void main(String[] args) {
 
         int dec = 10;
@@ -147,6 +211,8 @@ class Main{
         int n =13,i = 2;
 
         int start = 3,goal = 4;
+
+        int arr[] = {1,2,3,4,5};
 
         System.out.println("Binary Value for " + dec + " : "+Dec2Bin(dec));  // TC -> O(logn)  SC  -> O(logn);
 
@@ -171,5 +237,7 @@ class Main{
         countSetBits(n);  // N & 1 , N = N >> 1
 
         startAndGoal(start,goal); // start ^ goal,countSetBitLength
+        
+        allSubset(arr);  // TC -> O(N *2 ^ N)  SC --> O(N *2 ^ N)
     }
 }
