@@ -84,7 +84,7 @@ public class SingleNumber {
     
     }
 
-    public static void singleNumber3III(int arr[]){
+    public static void singleNumber2III(int arr[]){
 
         int n = arr.length;
         int ones = 0,twos = 0;
@@ -99,11 +99,35 @@ public class SingleNumber {
         System.out.println("The single number is : " + ones);
     }
 
+    public static void singleNumber3(int[] arr){
+
+        int n = arr.length;
+        long xor = 0;
+        for(int i = 0 ; i < n ; i++){
+            xor = xor ^ (long)arr[i];
+        }
+        long xorResult = xor & (xor - 1) ^ xor;
+
+        long b1 = 0, b2 = 0;
+
+        for(int i = 0 ; i < n ; i++){
+            long temp = (long)arr[i] & xorResult;
+            if(temp != 0){
+                b1 = b1 ^ arr[i];
+            } else{
+                b2 = b2 ^ arr[i];
+            }
+        }
+        System.out.print("The single number is : [" + b1 + " ," + b2 + "]");
+    }
+
     public static void main(String[] args) {
         
         int arr1[] = {1,3,2,3,1};
 
         int arr2[] = {1,1,3,3,1,3,2,4,5,4,5,5,4};
+
+        int arr3[] = {1,4,3,1,2,2,3,14};
 
         singleNumber1Brute(arr1); // O(N * log M) + O(M) --> M = N / 2 + 1;
         
@@ -113,6 +137,8 @@ public class SingleNumber {
 
         singleNumber2II(arr2);  // TC --> O(N * log N) + N / 3 , SC --> O(1)
 
-        singleNumber3III(arr2);  // TC --> O(N)  SC  --> O(1)
+        singleNumber2III(arr2);  // TC --> O(N)  SC  --> O(1)
+
+        singleNumber3(arr3);  // TC --> O(2*N)  SC --> O(1)
     }
 }

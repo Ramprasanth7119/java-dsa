@@ -55,10 +55,7 @@ class Main{
     @SuppressWarnings("Convert2Lambda")
     public static void sortListOfLists(List<List<Integer>> arr){
 
-        Collections.sort(arr,new Comparator<List<Integer>>(){
-
-            @Override
-            public int compare(List<Integer> list1 , List<Integer> list2){
+        Comparator<List<Integer>> com = ((list1,list2) -> {
 
                 int size = Integer.compare( list1.size() , list2.size());
                 if(size != 0) return size;
@@ -69,9 +66,9 @@ class Main{
                     if(elementCompare != 0) return elementCompare;
                 }
                 return 0;
-            }
-            
-        });
+            });
+
+        Collections.sort(arr , com);
     }
 
     public static void swap2numbers(int n1,int n2){
@@ -123,7 +120,7 @@ class Main{
 
     public static void removeLastSetBit(int N){
 
-        int result = N&N-1;
+        int result = N & N - 1;
 
         System.out.println(" "+ result + " " + Dec2Bin(result));
     }
@@ -197,7 +194,26 @@ class Main{
         printList(ans);
 
         return ans;
+    }
 
+    public static int ToNRange(int N){
+
+        switch (N % 4) {
+            case 1:
+                return 1;
+            case 2:
+                return N+1;
+            case 3:
+                return 0;
+            default:
+                break;
+        }
+        return N;
+    }
+
+    public static int LtoRXor(int left , int right){
+
+        return ToNRange( left - 1) ^ ToNRange(right);
     }
 
     public static void main(String[] args) {
@@ -213,6 +229,10 @@ class Main{
         int start = 3,goal = 4;
 
         int arr[] = {1,2,3,4,5};
+
+        int val = 2;
+
+        int left = 4 , right = 7;
 
         System.out.println("Binary Value for " + dec + " : "+Dec2Bin(dec));  // TC -> O(logn)  SC  -> O(logn);
 
@@ -239,5 +259,9 @@ class Main{
         startAndGoal(start,goal); // start ^ goal,countSetBitLength
         
         allSubset(arr);  // TC -> O(N *2 ^ N)  SC --> O(N *2 ^ N)
+
+        System.out.println("Range xor value is : "+ToNRange(val)); // O(1)
+
+        System.out.println("Xor range from " + left + " to " + right + " is " + LtoRXor(left,right));  // O(1);
     }
 }
