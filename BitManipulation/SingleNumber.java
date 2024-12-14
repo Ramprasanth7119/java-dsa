@@ -106,7 +106,7 @@ public class SingleNumber {
         for(int i = 0 ; i < n ; i++){
             xor = xor ^ (long)arr[i];
         }
-        long xorResult = xor & (xor - 1) ^ xor;
+        long xorResult = xor & (xor - 1) ^ xor; // First set Bit
 
         long b1 = 0, b2 = 0;
 

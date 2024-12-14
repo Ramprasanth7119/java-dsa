@@ -199,14 +199,17 @@ class Main{
     public static int ToNRange(int N){
 
         switch (N % 4) {
-            case 1:
+            case 1 -> {
                 return 1;
-            case 2:
+            }
+            case 2 -> {
                 return N+1;
-            case 3:
+            }
+            case 3 -> {
                 return 0;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
         return N;
     }
@@ -214,6 +217,36 @@ class Main{
     public static int LtoRXor(int left , int right){
 
         return ToNRange( left - 1) ^ ToNRange(right);
+    }
+
+    public static long divideWithoutOperator(long dividend,long divisor){
+
+        long ans = 0;
+        boolean sign = true;
+
+        //base conditions
+        if(dividend == divisor) return 1;
+        if(dividend < 0 && divisor > 0) sign = false;
+        if(dividend > 0 && divisor < 0) sign = false;
+
+        long n1 = Math.abs(dividend);
+        long n2 = Math.abs(divisor);
+
+        while(n1 >= n2){
+
+            int cnt = 0;
+
+            while(n1 >= (n2 << (cnt + 1))){ // n1 >= n2 ^ (cnt+1)
+                cnt += 1;
+            }
+            ans += 1 << cnt; // 2 ^ cnt
+            n1 = n1 - (n2 << cnt); // n1 - 2 ^ cnt
+        }
+
+        if(ans == (1<<31) && sign) return Integer.MAX_VALUE;
+        if(ans == (1<<31) && sign) return Integer.MIN_VALUE;
+
+        return sign ? ans : -ans;
     }
 
     public static void main(String[] args) {
@@ -232,7 +265,9 @@ class Main{
 
         int val = 2;
 
-        int left = 4 , right = 7;
+        int left = 1 , right = 7;
+
+        long dividend = -1<<31 , divisor = 3;
 
         System.out.println("Binary Value for " + dec + " : "+Dec2Bin(dec));  // TC -> O(logn)  SC  -> O(logn);
 
@@ -263,5 +298,7 @@ class Main{
         System.out.println("Range xor value is : "+ToNRange(val)); // O(1)
 
         System.out.println("Xor range from " + left + " to " + right + " is " + LtoRXor(left,right));  // O(1);
+
+        System.out.println("The quotient for " + dividend + "/" + divisor + " is : " + divideWithoutOperator(dividend, divisor));
     }
 }
