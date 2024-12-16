@@ -134,7 +134,7 @@ class Main{
         } else{
             System.out.println(N + " is not a power of 2");
         }
-    }
+    } 
 
     public static void countSetBits(int N){
         
