@@ -13,7 +13,7 @@ class Main{
             res += x; 
         }
         return res;
-    }    
+    }     
 
     public static String Dec2Bin(int dec){
         String res = "";
