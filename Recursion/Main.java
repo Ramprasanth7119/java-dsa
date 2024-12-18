@@ -196,29 +196,29 @@ public class Main {
 
         String s = "madam";
 
-        // printNTo1Count(n,0);
+         printNTo1Count(n,0);
 
-        // printNameNTimes(n);
+         printNameNTimes(n);
 
-        // number1ToN(1,n);
+         number1ToN(1,n);
 
-        // numberNTo1(n,n);
+         numberNTo1(n,n);
 
-        // number1ToNBackTracking(n, n);
+         number1ToNBackTracking(n, n);
 
-        // numberNTo1BackTracking(1, n);
+         numberNTo1BackTracking(1, n);
 
-        // sumOfNumbers(n,n,0);
+         sumOfNumbers(n,n,0);
 
-        // factorial1(n,n,1);
+         factorial1(n,n,1);
 
-        // System.out.println("factorial of " + n +  " is : " + factorial2(n));
+         System.out.println("factorial of " + n +  " is : " + factorial2(n));
 
-        // reverseArray(arr);
+         reverseArray(arr);
 
-        // System.out.println(palindrome(s));
+         System.out.println(palindrome(s));
 
-        fibbonacci(n);
+         fibbonacci(n);
 
         System.out.println(nThFibbonacci(n));  // O(2 ^ N);
 
