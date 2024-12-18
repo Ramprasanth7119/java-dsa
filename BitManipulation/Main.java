@@ -83,12 +83,12 @@ class Main{
     public static void IthBitSetOrNot(int N,int i){
 
         int result = N & (1<<i);
+        
         if(result > 0 ){
             System.out.println("The bit is set");
         } else{
             System.out.println("The bit is not set");
         }
-
     }
 
     public static void setTheIthBit(int N,int i){
