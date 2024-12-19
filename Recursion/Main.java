@@ -221,31 +221,33 @@ public class Main {
 
         List<Integer> ans = new ArrayList<>();
 
-        // printNTo1Count(n,0);
+         printNTo1Count(n,0);
 
-        // printNameNTimes(n);
+         printNTo1Count(n,0);
 
-        // number1ToN(1,n);
+         printNameNTimes(n);
 
-        // numberNTo1(n,n);
+         number1ToN(1,n);
 
-        // number1ToNBackTracking(n, n);
+         numberNTo1(n,n);
 
-        // numberNTo1BackTracking(1, n);
+         number1ToNBackTracking(n, n);
 
-        // sumOfNumbers(n,n,0);
+         numberNTo1BackTracking(1, n);
 
-        // factorial1(n,n,1);
+         sumOfNumbers(n,n,0);
 
-        // System.out.println("factorial of " + n +  " is : " + factorial2(n));
+         factorial1(n,n,1);
 
-        // reverseArray(arr);
+         System.out.println("factorial of " + n +  " is : " + factorial2(n));
 
-        // System.out.println(palindrome(s));
+         reverseArray(arr);
 
-        // fibbonacci(n);
+         System.out.println(palindrome(s));
 
-        // System.out.println(nThFibbonacci(n));  // O(2 ^ N);
+        fibbonacci(n);
+
+        System.out.println(nThFibbonacci(n));  // O(2 ^ N);
 
         subset(arr,0,len,ans);
 
