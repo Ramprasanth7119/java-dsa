@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -188,13 +190,36 @@ public class Main {
         }
     }   
 
+    @SuppressWarnings("UnnecessaryReturnStatement")
+    public static void subset(int arr[] , int ind , int n , List<Integer> ans){
+        
+        if(ind == n){
+            for(int i:ans){
+                System.out.print("[" + i + "]");
+            }
+            System.out.println();
+            return;
+        }
+
+        ans.add(arr[ind]);
+
+        subset(arr,ind+1,n,ans);
+
+        ans.remove(ans.size() - 1);
+
+        subset(arr, ind+1, n, ans);
+    }
     public static void main(String[] args) {
 
         int n = 6;
 
-        int arr[] = {1,2,3,4,5};
+        int arr[] = {1,2,3};
+
+        int len = arr.length;
 
         String s = "madam";
+
+        List<Integer> ans = new ArrayList<>();
 
         // printNTo1Count(n,0);
 
@@ -218,9 +243,13 @@ public class Main {
 
         // System.out.println(palindrome(s));
 
-        fibbonacci(n);
+        // fibbonacci(n);
 
-        System.out.println(nThFibbonacci(n));  // O(2 ^ N);
+        // System.out.println(nThFibbonacci(n));  // O(2 ^ N);
+
+        subset(arr,0,len,ans);
+
+
 
         
 
