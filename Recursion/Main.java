@@ -251,18 +251,5 @@ public class Main {
 
         subset(arr,0,len,ans);
 
-
-
-        
-
-        
-
-
-
-
-
-
-
-
     }
 }
