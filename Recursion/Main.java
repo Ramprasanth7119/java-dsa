@@ -31,7 +31,7 @@ public class Main {
     public static void printNameNTimes(int n){
         if(n < 1){
             return;
-        }
+        } 
 
         System.out.println("ram " + n);
         printNameNTimes(n-1);
