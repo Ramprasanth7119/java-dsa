@@ -209,6 +209,33 @@ public class Main {
 
         subset(arr, ind+1, n, ans);
     }
+
+    @SuppressWarnings("UnnecessaryReturnStatement")
+    public static void subsetSum(int arr[] , int ind , int n , List<Integer> ans,int sum,int k){
+        
+        if(ind == n){
+            if(sum == k){
+                for(int i:ans){
+                    System.out.print("[" + i + "]");
+                }
+                System.out.println();
+            }
+            return;
+        }
+
+        ans.add(arr[ind]);
+
+        sum += arr[ind];
+
+        subsetSum(arr,ind+1,n,ans,sum,k);
+
+        ans.remove(ans.size() - 1);
+
+        sum -= arr[ind];
+
+        subsetSum(arr, ind+1, n, ans,sum,k);
+    }
+
     public static void main(String[] args) {
 
         int n = 6;
@@ -216,6 +243,8 @@ public class Main {
         int arr[] = {1,2,3};
 
         int len = arr.length;
+
+        int k = 3;
 
         String s = "madam";
 
@@ -249,7 +278,9 @@ public class Main {
 
         System.out.println(nThFibbonacci(n));  // O(2 ^ N);
 
-        subset(arr,0,len,ans);
+       // subset(arr,0,len,ans);
+
+        subsetSum(arr,0,len,ans,0,k);
 
 
 
