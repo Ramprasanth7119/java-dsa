@@ -31,7 +31,7 @@ public class Main {
     public static void printNameNTimes(int n){
         if(n < 1){
             return;
-        }
+        } 
 
         System.out.println("ram " + n);
         printNameNTimes(n-1);
@@ -281,19 +281,6 @@ public class Main {
        // subset(arr,0,len,ans);
 
         subsetSum(arr,0,len,ans,0,k);
-
-
-
-        
-
-        
-
-
-
-
-
-
-
 
     }
 }
