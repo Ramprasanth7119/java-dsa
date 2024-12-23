@@ -25,7 +25,7 @@ public class Main {
         // N to 1
         System.out.print(count + " ");
 
-    }
+    } 
 
     @SuppressWarnings("UnnecessaryReturnStatement")
     public static void printNameNTimes(int n){
