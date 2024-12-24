@@ -6,7 +6,7 @@ public class Main {
     public static void swapArray(int arr[] ,int a,int b){
         int temp = arr[a];
         arr[a]  =  arr[b];
-        arr[b]  =  temp;
+        arr[b]  =  temp; 
     }
  
     @SuppressWarnings("UnnecessaryReturnStatement")
