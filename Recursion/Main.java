@@ -7,7 +7,7 @@ public class Main {
         int temp = arr[a];
         arr[a]  =  arr[b];
         arr[b]  =  temp; 
-    }
+    } 
  
     @SuppressWarnings("UnnecessaryReturnStatement")
     public static void printNTo1Count(int n,int count){
