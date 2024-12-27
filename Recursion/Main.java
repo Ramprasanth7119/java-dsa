@@ -236,6 +236,35 @@ public class Main {
         subsetSum(arr, ind+1, n, ans,sum,k);
     }
 
+    @SuppressWarnings("UnnecessaryReturnStatement")
+    public static boolean singleSubsetSum(int arr[] , int ind , int n , List<Integer> ans,int sum,int k){
+        
+        if(ind == n){
+            if(sum == k){
+                for(int i:ans){
+                    System.out.print("[" + i + "] ");
+                }
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        ans.add(arr[ind]);
+
+        sum += arr[ind];
+
+        if(singleSubsetSum(arr,ind+1,n,ans,sum,k) == true) return true;
+
+        ans.remove(ans.size() - 1);
+
+        sum -= arr[ind];
+
+        if(singleSubsetSum(arr, ind+1, n, ans,sum,k) == true) return true;
+
+        return false;
+    }
+
     public static void main(String[] args) {
 
         int n = 6;
@@ -250,9 +279,7 @@ public class Main {
 
         List<Integer> ans = new ArrayList<>();
 
-         printNTo1Count(n,0);
-
-         printNTo1Count(n,0);
+         printNTo1Count(n,1);
 
          printNameNTimes(n);
 
@@ -278,9 +305,11 @@ public class Main {
 
         System.out.println(nThFibbonacci(n));  // O(2 ^ N);
 
-       // subset(arr,0,len,ans);
+        subset(arr,0,len,ans);
 
         subsetSum(arr,0,len,ans,0,k);
+
+        System.out.println(singleSubsetSum(arr,0,len,ans,0,3));
 
     }
 }
