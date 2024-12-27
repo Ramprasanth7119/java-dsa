@@ -8,7 +8,10 @@ public class Main {
         arr[a]  =  arr[b];
         arr[b]  =  temp; 
     } 
- 
+
+    // To avoid the unwanted return statement == >   @SuppressWarnings("UnnecessaryReturnStatement")
+
+    
     @SuppressWarnings("UnnecessaryReturnStatement")
     public static void printNTo1Count(int n,int count){
         
@@ -309,7 +312,7 @@ public class Main {
 
         subsetSum(arr,0,len,ans,0,k);
 
-        System.out.println(singleSubsetSum(arr,0,len,ans,0,3));
+        System.out.println(singleSubsetSum(arr,0,len,ans,0,k));
 
     }
 }
