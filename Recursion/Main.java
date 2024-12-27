@@ -6,9 +6,9 @@ public class Main {
     public static void swapArray(int arr[] ,int a,int b){
         int temp = arr[a];
         arr[a]  =  arr[b];
-        arr[b]  =  temp;
-    }
-
+        arr[b]  =  temp; 
+    } 
+ 
     @SuppressWarnings("UnnecessaryReturnStatement")
     public static void printNTo1Count(int n,int count){
         
@@ -25,7 +25,7 @@ public class Main {
         // N to 1
         System.out.print(count + " ");
 
-    }
+    } 
 
     @SuppressWarnings("UnnecessaryReturnStatement")
     public static void printNameNTimes(int n){
