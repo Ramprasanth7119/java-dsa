@@ -264,6 +264,27 @@ public class Main {
 
         return false;
     }
+    @SuppressWarnings("UnnecessaryReturnStatement")
+    public static int subsetCount(int arr[] , int ind , int n ,int sum,int k){
+        
+        if(ind == n){
+            if(sum == k){
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+        sum += arr[ind];
+
+        int l = subsetCount(arr,ind+1,n,sum,k);
+
+        sum -= arr[ind];
+
+        int r = subsetCount(arr, ind+1, n,sum,k);
+
+        return l+ r;
+    }
 
     public static void main(String[] args) {
 
@@ -310,6 +331,8 @@ public class Main {
         subsetSum(arr,0,len,ans,0,k);
 
         System.out.println(singleSubsetSum(arr,0,len,ans,0,3));
+
+        System.out.println(subsetCount(arr,0,len,0,3));
 
     }
 }
