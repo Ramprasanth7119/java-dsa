@@ -100,11 +100,36 @@ public class Main2 {
         }
     }
 
+    @SuppressWarnings("UnnecessaryReturnStatement")
+    public static void combinationSumI(int ind , int arr[] , int target , List<List<Integer>> ans , List<Integer> temp , int n){
+        
+        if(ind == n){
+            if(target == 0){
+                ans.add(new ArrayList<>(temp));
+            }
+            return;
+        }
+
+        if(arr[ind] <= target){
+
+            temp.add(arr[ind]);
+            combinationSumI(ind, arr, target-arr[ind], ans, temp, n);
+            temp.remove(temp.size()-1);
+        }
+
+        combinationSumI(ind+1,arr,target,ans,temp,n);
+
+    }
+
     public static void main(String[] args) {
         
-        int arr[] = {1,4,3,5,2,7,6,9,8};
+        int arr[] = {1,4,2,2,3};
+
+        int target = 4;
 
         int len = arr.length;
+
+        List<List<Integer>> ans = new ArrayList<>();
 
         System.out.print("Before Sorting : ");
         for(int i = 0;i<len;i++){
@@ -114,9 +139,11 @@ public class Main2 {
         }
         System.out.println();
 
-         mergeSort(arr, 0, len - 1);
+        mergeSort(arr, 0, len - 1);
 
         quickSort(arr, 0, len-1);
+
+        combinationSumI(0, arr, target, ans, new ArrayList<>(), len);
 
 
         System.out.print("After Sorting : ");
@@ -124,5 +151,10 @@ public class Main2 {
             
             System.out.print(arr[i]+" ");
         }
+
+        for(List<Integer> i : ans){
+            System.out.println(i);
+        }
+
     }
 }

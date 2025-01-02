@@ -1,6 +1,3 @@
-
-
-
 public class validdob {
 
      public static String checkDob(int d,int m,int y){
