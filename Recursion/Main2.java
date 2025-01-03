@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main2 {
-
+ 
     public static void swap(int arr[],int n1,int n2){
 
         int temp = arr[n1];
