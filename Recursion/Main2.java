@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Main2 {
@@ -121,15 +123,52 @@ public class Main2 {
 
     }
 
+    @SuppressWarnings("UnnecessaryReturnStatement")
+    public static void combinationSumII(int ind , int arr[] , int target , List<List<Integer>> ans , List<Integer> temp , int n){
+        
+        if(target == 0){
+            ans.add(new ArrayList<>(temp));
+            return;
+        }
+
+        for(int i = ind ; i < n ; i++){
+
+            if(i > ind && arr[i] == arr[i-1]) continue;
+
+            if(arr[i] > target) break;
+
+            temp.add(arr[i]);
+            combinationSumII(ind + 1, arr, target - arr[i], ans, temp, n);
+            temp.remove(temp.size() - 1);
+
+        }
+    }
+
+    public static void subsetSumI(int ind , int arr[] , List<Integer> ans , int n , int sum){
+
+        if(ind == n){
+            ans.add(sum);
+            return;
+        }
+
+        subsetSumI(ind + 1, arr , ans , n , sum + arr[ind]);
+
+        subsetSumI(ind + 1, arr, ans, n, sum);
+    }
+
     public static void main(String[] args) {
         
-        int arr[] = {1,4,2,2,3};
+        int arr[] = {1,2,4,3,5};
 
         int target = 4;
 
         int len = arr.length;
 
+        Arrays.sort(arr);
+
         List<List<Integer>> ans = new ArrayList<>();
+
+        List<Integer> sum = new ArrayList<>();
 
         System.out.print("Before Sorting : ");
         for(int i = 0;i<len;i++){
@@ -139,12 +178,17 @@ public class Main2 {
         }
         System.out.println();
 
-        mergeSort(arr, 0, len - 1);
+        mergeSort(arr, 0, len - 1); // O(N Log N)  // SpaceComplexity --> O(N)
 
-        quickSort(arr, 0, len-1);
+        // quickSort(arr, 0, len-1);  // O(N Log N) // SpaceComplexity --> O(1)  // WorstCase --> O(N*2)
 
-        combinationSumI(0, arr, target, ans, new ArrayList<>(), len);
+        // combinationSumI(0, arr, target, ans, new ArrayList<>(), len);  // O(2 ^ n)
 
+        combinationSumII(0, arr, target, ans, new ArrayList<>(), len);  // O(2 ^ n * k);
+
+        subsetSumI(0, arr, sum, len, 0); // O(2 ^ N * log(2 ^ N))
+
+        Collections.sort(sum);
 
         System.out.print("After Sorting : ");
         for(int i = 0;i<len;i++){
@@ -154,6 +198,10 @@ public class Main2 {
 
         for(List<Integer> i : ans){
             System.out.println(i);
+        }
+
+        for(int i : sum){
+            System.out.print(i + " ");
         }
 
     }
