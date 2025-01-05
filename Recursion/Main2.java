@@ -156,6 +156,20 @@ public class Main2 {
         subsetSumI(ind + 1, arr, ans, n, sum);
     }
 
+    public static void subsetSumII(int ind , int arr[] , List<Integer> temp  , List<List<Integer>> ans , int n){
+        ans.add(new ArrayList<>(temp));
+
+        for(int i = ind ; i < n ; i++){
+            
+            if(i != ind && arr[i] == arr[i-1]) continue;
+
+            temp.add(arr[i]);
+            subsetSumII(i + 1,arr,temp,ans,n);
+            temp.remove(temp.size() - 1);
+
+        }
+    }
+
     public static void main(String[] args) {
         
         int arr[] = {1,2,4,3,5};
@@ -174,19 +188,21 @@ public class Main2 {
         for(int i = 0;i<len;i++){
             
             System.out.print(arr[i]+" ");
-
+ 
         }
         System.out.println();
 
         mergeSort(arr, 0, len - 1); // O(N Log N)  // SpaceComplexity --> O(N)
 
-        // quickSort(arr, 0, len-1);  // O(N Log N) // SpaceComplexity --> O(1)  // WorstCase --> O(N*2)
+        quickSort(arr, 0, len-1);  // O(N Log N) // SpaceComplexity --> O(1)  // WorstCase --> O(N*2)
 
-        // combinationSumI(0, arr, target, ans, new ArrayList<>(), len);  // O(2 ^ n)
+        combinationSumI(0, arr, target, ans, new ArrayList<>(), len);  // O(2 ^ n)
 
         combinationSumII(0, arr, target, ans, new ArrayList<>(), len);  // O(2 ^ n * k);
 
         subsetSumI(0, arr, sum, len, 0); // O(2 ^ N * log(2 ^ N))
+
+        subsetSumII(0, arr, new ArrayList<>(), ans, len); // O(2 ^ n * N)  // O(2 ^ N) *  O(K) O(N) 
 
         Collections.sort(sum);
 
