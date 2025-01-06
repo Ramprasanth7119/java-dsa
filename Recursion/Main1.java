@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class Main1 {
 
     public static void swapArray(int arr[] ,int a,int b){
         int temp = arr[a];
