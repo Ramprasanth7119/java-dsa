@@ -85,6 +85,30 @@ public class Permutation {
         return res;
     }
 
+    public static boolean isPalindrome(String s , int start , int end){
+        while(start < end){
+            if(s.charAt(start++) != s.charAt(end--)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void palindromePartioning(int ind , String s , List<String> temp , List<List<String>> ans){
+
+        if(ind == s.length()){
+            ans.add(new ArrayList<>(temp));
+            return;
+        }
+
+        for(int i = ind ; i < s.length() ; i++){
+            if(isPalindrome(s,ind,i)){
+                temp.add(s.substring(ind, i+ 1));
+                palindromePartioning(i + 1, s, temp, ans);
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
     public static void main(String[] args) {
         
         int arr[] = {1,2,3,4};
@@ -93,23 +117,31 @@ public class Permutation {
 
         int k = 9;
 
-        String res = "";
+        String str = "";
+
+        String s = "aab";
 
         List<List<Integer>> ans = new ArrayList<>();
 
         boolean flag[] = new boolean[n];
 
+        List<List<String>> res = new ArrayList<>();
+
         // permutationsI(arr, n, new ArrayList<>(), ans, flag);
 
         // permutationsII(0, arr, n, ans);
-
-        permutationKthPair(n, k, res);
 
         for(List<Integer> i : ans){
             System.out.println(i);
         }
 
-        System.out.println(permutationKthPair(n, k, res));
+        System.out.println(permutationKthPair(n, k, str));
+
+        palindromePartioning(0, s, new ArrayList<>(), res);
+
+        for(List<String> i : res){
+            System.out.println(i);
+        }
 
     }
 }
