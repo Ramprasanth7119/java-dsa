@@ -7,7 +7,7 @@ import java.util.List;
 public class Main {
 
     public static int numberCount(int n){
-        int temp = n , cnt = 0;
+        int temp = n , cnt = 0; 
 
         while(temp > 0){
             int res = temp % 10;
