@@ -112,6 +112,15 @@ public class Main {
         return n1;
     }
 
+    public static void primeFactorsI(int n , List<Integer> arr){
+        for(int i=2;i<=n;i++){
+            if(n%i==0){
+                if(isPrime(i)){
+                    arr.add(i);
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) {
 
@@ -133,6 +142,8 @@ public class Main {
         int n = 10;
 
         factors(n, ans); // O(sqrt(N))
+
+        primeFactorsI(n, ans);
 
         Collections.sort(ans);
 
