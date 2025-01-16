@@ -70,8 +70,8 @@ public class Main {
             } 
         }
 
-        if(cnt == 2) System.out.print("The given Number is Prime Number and ");
-        else System.out.print("The Given Number is not a Prime Number and ");
+        // if(cnt == 2) System.out.print("The given Number is Prime Number and ");
+        // else System.out.print("The Given Number is not a Prime Number and ");
 
         if(cnt == 2) return true;
         return false;
@@ -122,6 +122,28 @@ public class Main {
         }
     }
 
+    public static void primeFactorsII(int n , List<Integer> arr){
+        for(int i=2;i<=n;i++){
+            if(n%i == 0){
+                arr.add(i);
+                while(n%i == 0){
+                    n = n / i;
+                }
+            }
+        }
+    }
+    public static void primeFactorsIII(int n , List<Integer> arr){
+        for(int i=2;i<=Math.sqrt(n);i++){
+            if(n%i == 0){
+                arr.add(i);
+                while(n%i == 0){
+                    n = n / i;
+                }
+            }
+        }
+        if(n != 1) arr.add(n);
+    }
+
     public static void main(String[] args) {
 
         System.out.println(numberCount(7659));  // O(log (N))
@@ -139,11 +161,15 @@ public class Main {
 
         List<Integer> ans = new ArrayList<>();
 
-        int n = 10;
+        int n = 37;
 
         factors(n, ans); // O(sqrt(N))
 
-        primeFactorsI(n, ans);
+        primeFactorsI(n, ans); // O(N * sqrt(N))
+
+        primeFactorsII(n, ans); // O(sqrt(N) * 2 * sqrt(N))
+
+        primeFactorsIII(n, ans); // O(sqrt(N) * log(N))
 
         Collections.sort(ans);
 
