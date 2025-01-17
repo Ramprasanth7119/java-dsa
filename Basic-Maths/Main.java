@@ -144,6 +144,52 @@ public class Main {
         if(n != 1) arr.add(n);
     }
 
+    public static int powerSet(int base , int exp){
+        int temp = exp;
+
+        int ans = 1;
+        while(exp > 0){
+            if(exp%2 == 1){
+                ans = ans * base;
+                exp = exp - 1;
+            } else{
+                exp = exp / 2;
+                base = base * base;
+            }
+        }
+        if(exp < 0) ans = 1/ans; // If power value is negative
+        return ans;
+    }
+
+    // Steve of Eratosthenes [An optimal solution to find the n range of prime numbers]
+    public static void primeToN(int n , List<Integer> arr){
+        
+        int prime[] = new int[n + 1];
+
+        for(int i=2;i<prime.length;i++){
+
+            prime[i] = 1;
+
+        }
+
+        for(int i = 2 ; i * i <= n ; i++){
+
+            if(prime[i] == 1){
+
+                for(int j = i * i ; j <= n ; j += i){
+
+                    prime[j] = 0;
+                }
+            }
+        }
+
+        for(int i = 2 ; i <= n ; i++){
+            if(prime[i] == 1){
+                arr.add(i);
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
         System.out.println(numberCount(7659));  // O(log (N))
@@ -161,15 +207,17 @@ public class Main {
 
         List<Integer> ans = new ArrayList<>();
 
-        int n = 37;
+        int n = 15;
 
-        factors(n, ans); // O(sqrt(N))
+        // factors(n, ans); // O(sqrt(N))
 
-        primeFactorsI(n, ans); // O(N * sqrt(N))
+        // primeFactorsI(n, ans); // O(N * sqrt(N))
 
-        primeFactorsII(n, ans); // O(sqrt(N) * 2 * sqrt(N))
+        // primeFactorsII(n, ans); // O(sqrt(N) * 2 * sqrt(N))
 
-        primeFactorsIII(n, ans); // O(sqrt(N) * log(N))
+        // primeFactorsIII(n, ans); // O(sqrt(N) * log(N))
+
+        primeToN(n, ans); // TC -->  O(N) + O(log(log N)) + O(N)  //  SC --> O(N)
 
         Collections.sort(ans);
 
@@ -182,5 +230,7 @@ public class Main {
         System.out.println(gcdI(12,24)); // O(Min(n1,n2))
 
         System.out.println(gcdII(20,40)); // O(log pi (min(n1,n2)))
+
+        System.out.println(powerSet(2, 10)); // O(log 2 N)
     }
 }
