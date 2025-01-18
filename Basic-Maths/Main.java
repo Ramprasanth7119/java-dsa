@@ -190,6 +190,52 @@ public class Main {
         }
     }
 
+    public static int[] funPrime(int n){
+        int prime[] = new int[n + 1];
+
+        for(int i = 2 ; i < n ; i++){
+
+            prime[i] = 1;
+
+        }
+
+        for(int i = 2 ; i * i <= n ; i++){
+
+            if(prime[i] == 1){
+
+                for(int j = i * i ; j <= n ; j += i){
+
+                    prime[j] = 0;
+
+                }
+            }
+        }
+        return prime;
+    }
+
+    public static void primeLeftToRight(int queries[][] , List<Integer> arr){
+
+        int prime[] = funPrime(1000000);
+
+        int cnt = 0;
+
+        for(int i = 2 ; i < prime.length ; i++){
+            cnt += prime[i];
+            prime[i] = cnt; 
+        }
+
+        for(int i = 0 ; i < queries.length ; i++){
+
+            int left = queries[i][0];
+            int right = queries[i][1];
+
+            int ans = prime[right] - prime[left - 1];
+
+            arr.add(ans);
+        }
+
+    }
+
     public static void main(String[] args) {
 
         System.out.println(numberCount(7659));  // O(log (N))
@@ -209,6 +255,8 @@ public class Main {
 
         int n = 15;
 
+        int queries[][] = {{1,1},{3,11},{19,37}};
+
         // factors(n, ans); // O(sqrt(N))
 
         // primeFactorsI(n, ans); // O(N * sqrt(N))
@@ -217,7 +265,9 @@ public class Main {
 
         // primeFactorsIII(n, ans); // O(sqrt(N) * log(N))
 
-        primeToN(n, ans); // TC -->  O(N) + O(log(log N)) + O(N)  //  SC --> O(N)
+        // primeToN(n, ans); // TC -->  O(N) + O(log(log N)) + O(N)  //  SC --> O(N)
+
+        primeLeftToRight(queries, ans); // TC --> O(10^6 log(log(10^6))) + O(10^6) + O(size of queries)
 
         Collections.sort(ans);
 
