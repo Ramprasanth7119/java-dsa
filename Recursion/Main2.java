@@ -61,7 +61,6 @@ public class Main2 {
         mergeSort(arr,mid+1,high);
 
         merge(arr,low,mid,high);
-
     }
 
     public static int partition(int arr[] , int low , int high){

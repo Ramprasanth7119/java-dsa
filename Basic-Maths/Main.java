@@ -1,8 +1,8 @@
 
-import static java.lang.StrictMath.log10;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import static java.lang.StrictMath.log10;
 
 public class Main {
 
@@ -236,6 +236,48 @@ public class Main {
 
     }
 
+    public static void smallPrimeFactors(List<List<Integer>> arr , int[] queries){
+        
+        int spf[] = new int[100000 + 1];
+
+        int len = spf.length;
+
+        for(int i = 1 ; i < len ; i++){
+            spf[i] = i;
+        }
+
+        for(int i = 2 ; i * i < len ; i++){
+
+            if(spf[i] == i){
+
+                for(int j = i * i ; j < len ; j += i){
+
+                    if(spf[j] == j){
+
+                        spf[j] = i;
+
+                    }
+                }
+            }
+        }
+
+        List<Integer> te = new ArrayList<>();
+
+        for(int i = 0 ; i < queries.length ; i++){
+
+            int temp = queries[i];
+
+            while(temp != 1){
+
+                te.add(temp);
+                temp = temp / spf[temp];
+
+            }
+
+            arr.add(te);
+        }
+    }
+
     public static void main(String[] args) {
 
         System.out.println(numberCount(7659));  // O(log (N))
@@ -257,18 +299,24 @@ public class Main {
 
         int queries[][] = {{1,1},{3,11},{19,37}};
 
-        // factors(n, ans); // O(sqrt(N))
+        int query[] = {5,7,20};
 
-        // primeFactorsI(n, ans); // O(N * sqrt(N))
+        List<List<Integer>> res = new ArrayList<>();
 
-        // primeFactorsII(n, ans); // O(sqrt(N) * 2 * sqrt(N))
+        factors(n, ans); // O(sqrt(N))
 
-        // primeFactorsIII(n, ans); // O(sqrt(N) * log(N))
+        primeFactorsI(n, ans); // O(N * sqrt(N))
 
-        // primeToN(n, ans); // TC -->  O(N) + O(log(log N)) + O(N)  //  SC --> O(N)
+        primeFactorsII(n, ans); // O(sqrt(N) * 2 * sqrt(N))
+
+        primeFactorsIII(n, ans); // O(sqrt(N) * log(N))
+
+        primeToN(n, ans); // TC -->  O(N) + O(log(log N)) + O(N)  //  SC --> O(N)
 
         primeLeftToRight(queries, ans); // TC --> O(10^6 log(log(10^6))) + O(10^6) + O(size of queries)
 
+        smallPrimeFactors(res, query);
+        
         Collections.sort(ans);
 
         for(int i : ans){
@@ -277,10 +325,15 @@ public class Main {
 
         System.out.println();
 
+        for(List<Integer> i : res){
+            System.out.println(i);
+        }
+
         System.out.println(gcdI(12,24)); // O(Min(n1,n2))
 
         System.out.println(gcdII(20,40)); // O(log pi (min(n1,n2)))
 
         System.out.println(powerSet(2, 10)); // O(log 2 N)
+
     }
 }
