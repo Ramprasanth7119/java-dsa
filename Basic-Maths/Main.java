@@ -295,7 +295,7 @@ public class Main {
 
         List<Integer> ans = new ArrayList<>();
 
-        int n = 15;
+        int n = 15; 
 
         int queries[][] = {{1,1},{3,11},{19,37}};
 
