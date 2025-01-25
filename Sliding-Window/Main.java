@@ -11,7 +11,7 @@ public class Main {
         int sum = 0;
 
         int n = arr.length;
-
+  
         while(right < n){
             sum += arr[right];
             while(sum >= k){
