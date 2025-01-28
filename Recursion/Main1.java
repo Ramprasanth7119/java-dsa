@@ -8,7 +8,7 @@ public class Main1 {
         arr[a]  =  arr[b];
         arr[b]  =  temp; 
     } 
-
+ 
     // To avoid the unwanted return statement == >   @SuppressWarnings("UnnecessaryReturnStatement")
 
     
