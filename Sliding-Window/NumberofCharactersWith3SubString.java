@@ -23,11 +23,37 @@ public class NumberofCharactersWith3SubString {
         }
         return cnt;
     }
+
+    public static int numberofCharactersWith3SubStringII(String s){
+
+        int n = s.length();
+
+        int hash[] ={-1,-1,-1}; 
+
+        int cnt = 0;
+
+        for(int i = 0 ; i < n ; i++){
+
+            hash[s.charAt(i) - 'a'] = i;
+
+            if(hash[0] != 0 && hash[1] != 0 && hash[2] != 0){
+
+                int temp = Math.min(hash[0] , hash[1]);
+                
+                cnt += (Math.min(temp , hash[2]));
+            }
+
+        }
+
+        return cnt;
+    }
    
     public static void main(String[] args) {
         
-        String str = "bbacba";
+        String str = "abcabc";
 
         System.out.println(numberofCharactersWith3SubStringI(str));
+
+        System.out.println(numberofCharactersWith3SubStringII(str));
     }
 }
