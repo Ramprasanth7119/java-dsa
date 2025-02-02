@@ -16,7 +16,7 @@ public class NumberofCharactersWith3SubString {
 
                 hash[s.charAt(j) - 'a']++;
 
-                if(hash[0] + hash[1] + hash[2] == 3){
+                if(hash[0] > 0 &&  hash[1] > 0 &&  hash[2] > 0){
                     cnt++;
                 }
             }
@@ -36,13 +36,12 @@ public class NumberofCharactersWith3SubString {
 
             hash[s.charAt(i) - 'a'] = i;
 
-            if(hash[0] != 0 && hash[1] != 0 && hash[2] != 0){
+            if(hash[0] != -1 && hash[1] != -1 && hash[2] != -1){
 
-                int temp = Math.min(hash[0] , hash[1]);
+                int min = (Math.min(Math.min(hash[0] , hash[1]) , hash[2]));
                 
-                cnt += (Math.min(temp , hash[2]));
+                cnt += min + 1;
             }
-
         }
 
         return cnt;
