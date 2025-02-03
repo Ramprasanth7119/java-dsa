@@ -53,8 +53,6 @@ public class LongestRepeatingCharacterReplacement {
 
                 maxFreq = 0;
 
-                for(int i = 0 ; i < hash.length ; i++) maxFreq = Math.max(maxFreq , hash[i]);
-
                 left++;
 
             }
@@ -75,11 +73,11 @@ public class LongestRepeatingCharacterReplacement {
 
     public static void main(String[] args) {
         
-        String s = "AABABBA";
+        String s = "AABAABA";
 
-        System.out.println(longestRepeatingCharacterReplacementI(s, 2));
+        System.out.println(longestRepeatingCharacterReplacementI(s, 2));  // O(N^2);
 
-        System.out.println(longestRepeatingCharacterReplacementII(s, 2));
+        System.out.println(longestRepeatingCharacterReplacementII(s, 2));  // O(N)
 
     }
 }
