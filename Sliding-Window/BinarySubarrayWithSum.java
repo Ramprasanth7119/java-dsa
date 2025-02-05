@@ -1,5 +1,5 @@
 
-
+ 
 public class BinarySubarrayWithSum{
 
     public static int binarySubarrayWithSum(int arr[] , int goal){
