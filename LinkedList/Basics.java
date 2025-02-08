@@ -16,7 +16,6 @@
     }
 }
 
-
 public class Basics {
 
     public static Node arrayToLL(int arr[]){
