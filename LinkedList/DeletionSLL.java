@@ -17,7 +17,7 @@ class Node{
     }
 }
 
-public class DeletionLL {
+public class DeletionSLL {
 
     public static void printLL(Node head){
         Node temp = head;
