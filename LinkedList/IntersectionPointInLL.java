@@ -105,16 +105,46 @@ public class IntersectionPointInLL {
         return  h1-h2;
     }
 
+    public static Node intersectionPointInLLII(Node head1 , Node head2){
+
+        Node t1 = head1 , t2 = head2;
+
+        while(t1 != null && t2 != null){
+
+            t1 = t1.next;
+            t2 = t2.next;
+
+            if(t1.next == null)  t1 = head2;
+
+            if(t2.next == null) t2 = head1;
+
+            if(t1 == t2) return t1;
+
+        }
+        return t1;
+
+    }
+
     public static void main(String[] args) {
         
         int arr1[] = {4,1,8,4,5};
 
         int arr2[] = {5,6,1,8,4,5};
 
+        int arr3[] = {3,1,4,6,2};
+
+        int arr4[] = {1,2,4,5,4,6,2};
+
         Node head1 = arrayToSLL(arr1);
 
         Node head2 = arrayToSLL(arr2);
 
+        Node head3 = arrayToSLL(arr3);
+
+        Node head4 = arrayToSLL(arr4);
+
+         
+        // To create a intersection point between two nodes , head1's current intersecting node and head2 's intersecting previous node...
         Node temp1 = head1;
         
         while (temp1 != null && temp1.data != 8) {
@@ -129,9 +159,27 @@ public class IntersectionPointInLL {
 
         temp2.next = temp1; 
 
-        Node insPoint = intersectionPointInLLI(head1, head2);
+        Node temp3 = head3;
 
-        printSLL(insPoint);
+        while (temp3 != null && temp3.data != 4) {
+            temp3 = temp3.next;
+        }
+
+        Node temp4 = head4;
+
+        while (temp4 != null && temp4.data != 5) {
+            temp4 = temp4.next;
+        }
+
+        temp4.next = temp3; 
+
+        Node insPointI = intersectionPointInLLI(head1, head2);
+
+        Node insPointII = intersectionPointInLLII(head3, head4);
+
+        printSLL(insPointI);
+
+        printSLL(insPointII);
 
 
     }
