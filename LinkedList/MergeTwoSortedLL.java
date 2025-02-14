@@ -52,7 +52,7 @@ public class MergeTwoSortedLL {
 
         int c1 = 1;
 
-        while(t1 != null){
+        while(t1.next != null){
 
             c1++;
             t1 = t1.next;
@@ -69,17 +69,22 @@ public class MergeTwoSortedLL {
 
         List<Integer> temp = new ArrayList<>();
 
+        t1 = head1;
+        t2 = head2;
+
         while(t1 != null){
             temp.add(t1.data);
+            t1 = t1.next;
         }
 
         while(t2 != null){
             temp.add(t2.data);
+            t2 = t2.next;
         }
 
         int n = temp.size();
         
-        int arr[] = new int[n];
+        int arr[] = new int[cnt];
 
         for(int i = 0;i<n;i++){
 
@@ -101,25 +106,29 @@ public class MergeTwoSortedLL {
 
         Node dummy = new Node(-1);
 
-        while(t1.next != null && t2.next != null){
+        Node temp = dummy;
+
+        while(t1 != null && t2 != null){
 
             if(t1.data < t2.data){
 
-                Node nw = new Node(t1.data);
-                dummy.next = nw;
-                dummy = nw; 
+                temp.next = t1;
+                temp = t1; 
                 t1 = t1.next;
                 
             } else {
 
-                Node nw = new Node(t2.data);
-                dummy.next = nw;
-                dummy = nw;
+                temp.next = t2;
+                temp = t2;
                 t2 = t2.next;
 
             }
 
         }
+
+        if(t1 != null) temp.next = t1;
+        else temp.next = t2;
+
         return dummy.next;
     }
 
@@ -141,11 +150,11 @@ public class MergeTwoSortedLL {
 
         Node head4 = arrayToSLL(arr4);
 
-        // Node mergeI = mergeTwoSortedLLI(head1, head2);
+        Node mergeI = mergeTwoSortedLLI(head1, head2); // O(N1 + N2) + O(log N) + O(N) , O(N)
 
-        Node mergeII = mergeTwoSortedLLII(head3, head4);
+        Node mergeII = mergeTwoSortedLLII(head3, head4); // O(N1 + N2) , O(1)
 
-        // printSLL(mergeI);
+        printSLL(mergeI);
 
         printSLL(mergeII);
 
