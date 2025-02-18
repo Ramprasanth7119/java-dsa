@@ -6,7 +6,7 @@ public class FruitBasket {
 
      // Brute Force --> O(N * N) , O(3);
     public static int fruitBasketI(int arr[]){
-        int n = arr.length;
+        int n = arr.length; 
 
         int maxLen = 0;
 
