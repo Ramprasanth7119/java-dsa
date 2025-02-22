@@ -23,7 +23,7 @@ class stack{
     int top = -1;
 
     void push(int x){
-        
+         
         if(top == arr.length - 1){
             System.out.println("Stack OverFlow..");
             return;
