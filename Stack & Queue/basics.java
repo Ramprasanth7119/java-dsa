@@ -1,4 +1,21 @@
 
+class Node {
+
+    int data;
+    Node next;
+
+    public Node(int data , Node next){
+        this.data = data;
+        this.next = next;
+    }
+
+    public Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+
+}
+
 class stack{
 
     int arr[] = new int[10];
@@ -108,6 +125,47 @@ class queue{
 
 }
 
+class stUsingLL{
+
+    Node top;
+    int size = 0;
+
+    void push(int val){
+
+        Node nw = new Node(val);
+        nw.next = top;
+        top = nw;
+        size++;
+
+    }
+
+    int pop(){
+
+        int el = top.data;
+
+        top = top.next;
+
+        size--;
+
+        return el;
+
+    }
+
+    int top(){
+
+        return top.data;
+
+    } 
+
+    int size(){
+
+        return size;
+
+    } 
+
+}
+
+
 public class basics {
     
     public static void main(String[] args) {
@@ -130,11 +188,28 @@ public class basics {
 
         q.push(2); q.push(4); q.push(6); q.push(8);
 
-        q.pop();
+        q.pop(); q.pop();
 
-        System.out.println(q.top());
+        System.out.println(q.top()); // [6,8]
 
-        System.out.println(q.size());
+        System.out.println(q.size()); // 2
+
+
+        stUsingLL sl = new stUsingLL();
+
+        sl.push(1); sl.push(2); sl.push(3); sl.push(4); // [1,2,3,4]
+
+        System.out.println(sl.pop()); // [1,2,3]
+        
+        System.out.println(sl.pop()); // [1,2]
+
+        System.out.println(sl.top()); // [2]
+
+        System.out.println(sl.size()); // 2
+
+
+
+
 
     }
 
