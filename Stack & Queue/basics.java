@@ -128,7 +128,7 @@ class queue{
 
 }
 
-class stUsingLL{
+class stackUsingLinkedList{
 
     Node top;
     int size = 0;
@@ -168,7 +168,7 @@ class stUsingLL{
 
 }
 
-class qLL{
+class queueUsingLinkedList{
 
     Node start , end;
 
@@ -256,7 +256,7 @@ class stackUsingQueue{
 
 }
 
-class queueUsingStack{
+class queueUsingStackI{
 
     Stack<Integer> s1 = new Stack<>();
     Stack<Integer> s2 = new Stack<>();
@@ -295,6 +295,65 @@ class queueUsingStack{
 
         return s1.size();
         
+    }
+
+}
+
+
+class queueUsingStackII{
+
+    Stack<Integer> s1 = new Stack<>();
+    Stack<Integer> s2 = new Stack<>();
+
+    void push(int val){
+
+        s1.push(val);
+
+    }
+
+    void pop(){
+
+        if(!s2.isEmpty()) s2.pop();
+
+        else {
+
+            int s = s1.size();
+            for(int i = 0 ; i < s ; i++){
+
+                s2.push(s1.pop());
+
+            }
+            s2.pop();
+
+        }
+
+    }
+
+    int top(){
+
+        if(!s2.isEmpty()){
+            
+            return s2.peek();
+
+        }
+
+        else {
+
+            int s = s1.size();
+            for(int i = 0 ; i < s ; i++){
+
+                s2.push(s1.pop());
+
+            }
+
+        }
+        return s2.peek();
+    }
+
+    int size(){
+
+        return s1.size() + s2.size();
+
     }
 
 }
@@ -338,7 +397,7 @@ public class basics {
         
         System.out.println("Stack using Linked List");
         // Stack using Linked List
-        stUsingLL sl = new stUsingLL();
+        stackUsingLinkedList sl = new stackUsingLinkedList();
 
         sl.push(1); sl.push(2); sl.push(3); sl.push(4); // [1,2,3,4]
 
@@ -355,7 +414,7 @@ public class basics {
         System.out.println("Queue using Linked List");
 
         // Queue using Linked List
-        qLL ql = new qLL(); 
+        queueUsingLinkedList ql = new queueUsingLinkedList(); 
 
         ql.push(1); ql.push(2); ql.push(3); ql.push(4); // [1,2,3,4]
 
@@ -381,19 +440,34 @@ public class basics {
         System.out.println(sq.size()); // 2
 
 
-        System.out.println("Queue Using Stack");
+        System.out.println("Queue Using StackI");
         // Queue Using Stack
-        queueUsingStack qs = new queueUsingStack();
+        queueUsingStackI qsI = new queueUsingStackI();  //  Used only when push operation is less and top , pop is more
 
-        qs.push(1); qs.push(2); qs.push(3); qs.push(4); // [1,2,3,4]
+        qsI.push(1); qsI.push(2); qsI.push(3); qsI.push(4); // [1,2,3,4]
 
-        qs.pop(); // [2,3,4]
+        qsI.pop(); // [2,3,4]
 
-        qs.pop(); // [3,4]
+        qsI.pop(); // [3,4]
 
-        System.out.println(qs.top()); // 3
+        System.out.println(qsI.top()); // 3
 
-        System.out.println(qs.size()); // 2
+        System.out.println(qsI.size()); // 2
+
+
+        System.out.println("Queue Using StackII");
+        // Queue Using StackII
+        queueUsingStackII qsII = new queueUsingStackII(); //  Used only when push operation is more and top , pop is less
+
+        qsII.push(1); qsII.push(2); qsII.push(3); qsII.push(4); // [1,2,3,4]
+
+        qsII.pop(); // [2,3,4]
+
+        qsII.pop(); // [3,4]
+
+        System.out.println(qsII.top()); // 3
+
+        System.out.println(qsII.size()); // 2
     }
 
 }
