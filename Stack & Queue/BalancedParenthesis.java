@@ -10,7 +10,7 @@ public class BalancedParenthesis {
 
             char x = s.charAt(i);
 
-            if(x == '(' || x == '{' || x == '[') st.push(x);
+            if(x == '(' || x == '{' || x == '[') st.push(x); 
 
             else{
 
