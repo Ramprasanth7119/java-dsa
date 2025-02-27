@@ -33,13 +33,13 @@ public class PrefixToPostfix {
 
     public static void main(String[] args) {
 
-        String s1 = "*-A/BC-/AKL";
+        String s1 = "*-+435/+243";
 
         String s2 = "*+AB-CD";
 
-        System.out.println(prefixToPostfix(s1)); // TC --> O(N) + O(N) , SC --> O(N) + O(N)
+        System.out.println(prefixToPostfix(s1)); // TC --> O(N) + O(N) , SC --> O(N)
 
-        System.out.println(prefixToPostfix(s2)); // TC --> O(N) + O(N) , SC --> O(N) + O(N)
+        System.out.println(prefixToPostfix(s2)); // TC --> O(N) + O(N) , SC --> O(N)
 
     }
 
