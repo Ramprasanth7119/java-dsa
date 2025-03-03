@@ -27,7 +27,7 @@ class minStackI{
         int min = Integer.MAX_VALUE;
 
         if(st.isEmpty()) min = val;
-        else Math.min(val , st.peek().second);
+        else min = Math.min(val , st.peek().second);
 
         st.push(new Pair(val , min));
 
@@ -82,9 +82,9 @@ class minStackII{
 
     void pop(){
 
-        int el = st.pop();
+        int val = st.pop();
 
-        if(el < mini) mini = (2 * mini) - el;
+        if(val < mini) mini = (2 * mini) - val;
 
     }
 
@@ -114,23 +114,23 @@ public class MinStack{
 
     public static void main(String[] args) {
         
-        minStackI s1 = new minStackI();
+        minStackI s1 = new minStackI();   // TC --> O(1) , SC --> O(2N) , To store pair variables.
 
-        s1.push(12);  s1.push(15);  s1.push(10);
+        s1.push(12);  s1.push(15);  s1.push(10); // [12,15,10]
 
-        s1.pop();
+        s1.pop(); // [12,15]
 
-        System.out.println(s1.top());
+        System.out.println("Top :" + s1.top()); // 15
 
-        System.out.println(s1.getMin());
+        System.out.println("Min :" + s1.getMin()); // 12
 
-        s1.pop();   s1.push(10);
+        s1.pop();   s1.push(10); // [12,10]
  
-        System.out.println(s1.top());
+        System.out.println("Top :" + s1.top()); // 10
 
-        System.out.println(s1.getMin());    
+        System.out.println("Min :" + s1.getMin());   // 10 
         
-        minStackII s2 = new minStackII();
+        minStackII s2 = new minStackII(); // TC --> O(1) , SC --> O(N)
 
         s2.push(12);  s2.push(15);  s2.push(10);
 
