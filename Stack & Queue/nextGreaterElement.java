@@ -33,7 +33,8 @@ public class nextGreaterElement {
 
         List<Integer> ans = nge(arr);  // TC --> O(2N) , SC --> O(2N)
 
-        for(int i : ans) System.out.print(i + " ");
+        for(int i = ans.size() - 1 ; i >= 0 ; i--) System.out.print(ans.get(i) + " ");
+        // OP ->  [12,-1,6,5,2,5,6,4,2,4,6,-1]
 
     }
 
