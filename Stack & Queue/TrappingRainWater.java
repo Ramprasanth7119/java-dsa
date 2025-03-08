@@ -10,7 +10,7 @@ public class TrappingRainWater {
         int post[] = new int[n];
 
         pre[0] = arr[0];
-
+ 
         post[n - 1] = arr[n - 1];
 
         for(int i = 1 ; i < n ; i++){
