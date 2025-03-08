@@ -37,10 +37,47 @@ public class TrappingRainWater {
         }
         return total;
     }
+
+    public static int trapII(int arr[]){
+
+        int n = arr.length;
+
+        int left = 0 , right = n - 1 , leftMax = 0 , rightMax = 0 , total = 0;
+
+        while(left <= right){
+
+            if(arr[left] < arr[right]){
+
+                if(leftMax > arr[left]) total += leftMax - arr[left];
+
+                else leftMax = arr[left];
+
+                left++;
+
+            }
+
+            else{
+
+                if(rightMax > arr[right]) total += rightMax - arr[right];
+
+                else rightMax = arr[right];
+
+                right--;
+
+            }
+
+        }
+        return total;
+
+    }
     
     public static void main(String[] args) {
         
-        int arr[] = {0,1,1};
+        int arr[] = {0,1,0,2,1,0,1,3,2,1,2,1};
+
+        System.out.println(trapI(arr)); // O(N) , O(N)
+
+        System.out.println(trapII(arr)); // O(N) , O(1)
 
     }
 
