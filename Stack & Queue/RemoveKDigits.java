@@ -10,6 +10,8 @@ public class RemoveKDigits {
 
         Stack<Character> st = new Stack<>();
 
+        if(k == n) return "0";
+
         for(int i = 0 ; i < n ; i++){
 
             while(!st.isEmpty() && k > 0 && st.peek() - '0' > s.charAt(i) - '0'){
@@ -30,8 +32,6 @@ public class RemoveKDigits {
 
         }
 
-        if(st.isEmpty()) return "0";
-
         StringBuilder res = new StringBuilder();
 
         while(!st.isEmpty()){
@@ -40,31 +40,23 @@ public class RemoveKDigits {
 
         }
 
-        while(res.length() != 0 && res.lastIndexOf(s) == '0'){
+        res.reverse();
 
-            int ind = res.lastIndexOf(s);
+        while(res.length() > 1 && res.charAt(0) == '0'){
 
-            res.deleteCharAt(ind);
-
-        }
-
-        StringBuilder ans = new StringBuilder();
-
-        for(int i = res.length() - 1 ; i >= 0 ; i--){
-
-            ans.append(res.charAt(i));
+            res.deleteCharAt(0);
 
         }
 
-        return ans.toString();
+        return res.toString();
 
     }
     
     public static void main(String[] args) {
         
-        String s = "1432219";
+        String s = "10200";
 
-        System.out.println(removekdigits(s , 3));
+        System.out.println(removekdigits(s , 1));
 
     }
 
