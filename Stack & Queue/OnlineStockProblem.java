@@ -1,32 +1,37 @@
 import java.util.*;
 
 class Pair{
-    int price;
-    int span;
+    int first;
+    int second;
 
-    Pair(int price , int span){
-        this.price = price;
-        this.span = span;
+    Pair(int first , int second){
+
+        this.first = first;
+        this.second = second;
+
     }
 }
 
-class StockSpanner{
+class StockSpannerI{
 
     List<Integer> arr;
 
-    public StockSpanner(){
+    public StockSpannerI(){
+
         arr = new ArrayList<>();
+
     }
 
     public int next(int price){
 
         arr.add(price);
 
-        int cnt = 0;
+        int cnt = 1;
 
         for(int i = arr.size() - 2 ; i >= 0 ; i--){
 
             if(arr.get(i) <= price){
+
                cnt++;
            }
 
@@ -34,6 +39,36 @@ class StockSpanner{
 
         }
         return cnt;
+    }
+
+}
+
+class StockSpannerII{
+
+    Stack<Pair> st;
+    int ind = -1;
+
+    public StockSpannerII(){
+
+        st = new Stack<>();
+        ind = -1;
+
+    }
+
+      public int next(int price){
+
+        int ans = 0;
+
+        ind++;
+
+        while(!st.isEmpty() && st.peek().first <= price) st.pop();
+
+        ans = ind - (st.empty() ? -1 : st.peek().second);
+
+        st.push(new Pair(price , ind));
+
+        return ans;
+
     }
 
 }
@@ -47,12 +82,25 @@ public class OnlineStockProblem {
 
         int[] stocks = {100, 80, 60, 70, 60, 75, 85};
 
-        StockSpanner ob = new StockSpanner();
+        StockSpannerI ob = new StockSpannerI();
 
         for(int i = 0 ; i < n ; i++){
 
-            // System.out.println()
-            System.out.println(ob.next(stocks[i]));
+            System.out.print(ob.next(stocks[i]) + " ");
+
+        }
+
+        System.out.println();
+        
+        int x = 7;
+
+        int[] stock = {100, 80, 60, 70, 60, 75, 85};
+
+        StockSpannerII obj = new StockSpannerII();
+
+        for(int i = 0 ; i < x ; i++){
+
+            System.out.print(obj.next(stocks[i]) + " ");
 
         }
 
