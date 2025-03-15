@@ -16,7 +16,7 @@ class Node {
 
 }
 
-class Browser{
+class Browser{ 
     
     Node head;
     Node curr = head;
