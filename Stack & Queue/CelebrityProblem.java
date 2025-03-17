@@ -53,7 +53,7 @@ public class CelebrityProblem {
 
                 bottom--;
 
-            }
+            } 
 
             else {
 
