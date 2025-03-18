@@ -6,7 +6,7 @@ public class TrappingRainWater {
         int n = arr.length , total = 0;
 
         int pre[] = new int[n];
-
+ 
         int post[] = new int[n];
 
         pre[0] = arr[0];
