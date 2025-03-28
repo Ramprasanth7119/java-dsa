@@ -1,7 +1,7 @@
 //{ Driver Code Starts
 import java.io.*;
 import java.util.*;
-
+ 
 class Sorted_Array {
     public static void main(String args[]) throws IOException {
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
