@@ -261,15 +261,15 @@ public class Main {
             }
         }
 
-        List<Integer> te = new ArrayList<>();
-
         for(int i = 0 ; i < queries.length ; i++){
 
             int temp = queries[i];
 
             while(temp != 1){
 
-                te.add(temp);
+                List<Integer> te = new ArrayList<>();
+                
+                te.add(spf[temp]);
                 temp = temp / spf[temp];
 
             }
@@ -315,7 +315,7 @@ public class Main {
 
         primeLeftToRight(queries, ans); // TC --> O(10^6 log(log(10^6))) + O(10^6) + O(size of queries)
 
-        smallPrimeFactors(res, query);
+        smallPrimeFactors(res, query);  // TC --> O(N log ( log N ) ) + O ( Q log N ) , SC --> O(N + Q log N )
         
         Collections.sort(ans);
 
