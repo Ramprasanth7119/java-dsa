@@ -1,7 +1,6 @@
 
-import java.util.Arrays;
 
-public class FirstAndLastOccurance {
+public class CountOccurrence{
 
      public static int lowerBound(int arr[], int n, int target){
 
@@ -86,7 +85,7 @@ public class FirstAndLastOccurance {
     }
 
     // Brute - O(N)
-    public static int[] firstAndLastOccuranceI(int arr[], int n, int target){
+    public static int countOccuranceI(int arr[], int n, int target){
 
         int left = -1, right = -1;
 
@@ -101,52 +100,53 @@ public class FirstAndLastOccurance {
             }
 
         }
-        return new int[]{left,right};
+        return right - left + 1;
 
     }
 
     // Better --> 2 * O(log N)
-    public static int[] firstAndLastOccuranceII(int arr[], int n, int target){
+    public static int countOccuranceII(int arr[], int n, int target){
 
         int left = lowerBound(arr, n, target);
 
-        if(left == n || arr[left] != target) return new int[]{-1,-1};
+        if(left == n || arr[left] != target) return 0;
 
         int right = upperBound(arr, n, target) - 1;
 
-        return new int[]{left, right};
+        return right - left + 1;
 
     }
 
     // Optimal --> O(log N)
-    public static int[] firstAndLastOccuranceIII(int arr[], int n, int target){
+    public static int countOccuranceIII(int arr[], int n, int target){
 
         int first = firstOccurance(arr, n, target);
 
-        if(first == -1) return new int[]{-1,-1};
+        if(first == -1) return 0;
 
         int last = lastOccurance(arr, n, target);
 
-        return new int[]{first,last};
+        return last - first + 1;
 
     }
     
     public static void main(String[] args) {
         
-        int arr[] = {5,7,7,8,8,10};
+        int arr[] = {5,7,7,7,8,8,10};
 
         int n = arr.length;
 
-        int target1 = 8, target2 = 6;
+        int target1 = 7, target2 = 1;
 
-        System.out.println(Arrays.toString(firstAndLastOccuranceI(arr,n,target1))); // [3,4] --> O(N)
+        System.out.println(countOccuranceI(arr,n,target1)); // 3 --> O(N) 
 
-        System.out.println(Arrays.toString(firstAndLastOccuranceII(arr,n,target2))); // [-1,-1] --> 2 * O(log N)
+        System.out.println(countOccuranceII(arr,n,target2)); // 0 --> 2 * O(log N)
 
-        System.out.println(Arrays.toString(firstAndLastOccuranceIII(arr,n,target1))); // [3,-4] --> O(log N)
+        System.out.println(countOccuranceIII(arr,n,target1)); // 3 --> O(log N)
 
-        System.out.println(Arrays.toString(firstAndLastOccuranceIII(arr,n,target2))); // [-1,-1] --> O(log N)
+        System.out.println(countOccuranceIII(arr,n,target2)); // 0 --> O(log N)
 
     } 
 
 }
+
