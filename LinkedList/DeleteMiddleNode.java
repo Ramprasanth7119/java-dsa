@@ -45,6 +45,8 @@ public class DeleteMiddleNode {
 
     public static Node removeMiddleNodeI(Node head){
 
+        if(head == null || head.next == null) return null;
+
         Node temp = head;
 
         int cnt = 0;
@@ -60,15 +62,12 @@ public class DeleteMiddleNode {
 
         temp = head;
 
-        while(temp != null){
-
-            mid--;
-            if(mid == 0) break;
+        for(int i=1;i<mid;i++){
             temp = temp.next;
-
         }
-
-        temp.next = temp.next.next;
+        
+        if(temp.next != null)
+           temp.next = temp.next.next;
 
         return head;
 
